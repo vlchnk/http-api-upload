@@ -13,14 +13,14 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def upload_file():
     if request.method == 'PUT':
         f = request.files['file']
-        hashName = secure_filename(f.filename)
-        filename = hashlib.md5(hashName.encode()).hexdigest()
+        hashname = secure_filename(f.filename)
+        filename = hashlib.md5(hashname.encode()).hexdigest()
         path = str(filename[:2])
 
         # Create dir
         try:
-            dirPath = f"./store/{path}"
-            os.makedirs(dirPath)
+            dirpath = f"./store/{path}"
+            os.makedirs(dirpath)
         except OSError:
             print(f"Creation of the directory {path} failed")
         else:
@@ -37,8 +37,8 @@ def upload_file():
 @app.route('/download/<path:hash>', methods=['GET', 'POST'])
 def download(hash):
     try:
-        pathFile = f'./store/{hash[:2]}/{hash}'
-        return send_file(pathFile, as_attachment=True)
+        pathfile = f'./store/{hash[:2]}/{hash}'
+        return send_file(pathfile, as_attachment=True)
     except:
         payload = {'status': '404', 'error': 'File not found'}
         return payload
@@ -47,9 +47,9 @@ def download(hash):
 @app.route('/delete/<path:hash>', methods=['DELETE'])
 def delete(hash):
     try:
-        pathFile = f'./store/{hash[:2]}/{hash}'
-        os.remove(pathFile)
-        return {'status': '200', 'description': f'File {hash} deleted'}
+        pathfile = f'./store/{hash[:2]}/{hash}'
+        os.remove(pathfile)
+        return {'status': '200', 'file': hash}
     except:
         payload = {'status': '404', 'error': 'File not found'}
         return payload
