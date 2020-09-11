@@ -1,6 +1,11 @@
 # http-api-upload
 
-### Stack 
+### Stack
+
+**venv**
+
+`pip3 install flask gunicorn`
+
 **Gunicorn**
 
 Start daemon:  `gunicorn --bind 0.0.0.0:5000 wsgi:app --daemon`
