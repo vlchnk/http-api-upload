@@ -61,7 +61,7 @@ def delete(hash):
 
 
 @app.errorhandler(404)
-def not_found(error):
+def not_found():
     return {'status': '404'}
 
 
