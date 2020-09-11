@@ -9,7 +9,7 @@ UPLOAD_FOLDER = './store'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-@app.route('/upload', methods=['GET', 'PUT'])
+@app.route('/upload', methods=['PUT'])
 def upload_file():
     if request.method == 'PUT':
         f = request.files['file']
@@ -32,9 +32,11 @@ def upload_file():
             return {'status': '200', 'hash': f'{filename}'}
         except:
             return {'status': '400', 'error': 'Something went wrong'}
+    else:
+        return {'status': '400', 'error': 'Something went wrong'}
 
 
-@app.route('/download/<path:hash>', methods=['GET', 'POST'])
+@app.route('/download/<path:hash>')
 def download(hash):
     try:
         pathfile = f'./store/{hash[:2]}/{hash}'
@@ -46,13 +48,16 @@ def download(hash):
 
 @app.route('/delete/<path:hash>', methods=['DELETE'])
 def delete(hash):
-    try:
-        pathfile = f'./store/{hash[:2]}/{hash}'
-        os.remove(pathfile)
-        return {'status': '200', 'file': hash}
-    except:
-        payload = {'status': '404', 'error': 'File not found'}
-        return payload
+    if request.method == 'DELETE':
+        try:
+            pathfile = f'./store/{hash[:2]}/{hash}'
+            os.remove(pathfile)
+            return {'status': '200', 'file': hash}
+        except:
+            payload = {'status': '404', 'error': 'File not found'}
+            return payload
+    else:
+        return {'status': '400', 'error': 'Something went wrong'}
 
 
 @app.errorhandler(404)
