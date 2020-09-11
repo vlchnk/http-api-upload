@@ -29,9 +29,9 @@ def upload_file():
         # Save file
         try:
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], path, filename))
-            return filename
+            return {'status': '200', 'hash': f'{filename}'}
         except:
-            return 'Bad :c'
+            return {'status': '400', 'error': 'Something went wrong'}
 
 
 @app.route('/download/<path:hash>', methods=['GET', 'POST'])
@@ -61,4 +61,4 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
