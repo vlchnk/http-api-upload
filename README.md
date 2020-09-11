@@ -32,7 +32,7 @@ curl -X PUT -F file=@<file> http://127.0.0.1:5000/upload
 *Response:*
 ```json
 // If file uploaded successfully
-{"hash":"a5dc28771a0c882a7d4841a8227e069a","status":"200"}
+{"hash":"<hash>","status":"200"}
 ```
 
 ```json
@@ -60,7 +60,7 @@ curl -X DELETE http://192.168.1.9:5000/delete/<hash>
 *Response:*
 ```json
 // If file deleted
-{"status": "200", "file": "hash"}
+{"status": "200", "file": "<hash>"}
 ```
 ```json
 // If file nothing
