@@ -3,6 +3,9 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
+venv/
+.idea/
+store/
 
 # Other files and folders
 .settings/
