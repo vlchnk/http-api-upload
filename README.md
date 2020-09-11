@@ -26,7 +26,7 @@ Hashing method is MD5
 ### Request and response
 #### Upload file:
 ```curl
-curl -X PUT -F file=@<file> http://127.0.0.1:5000/upload
+curl -X PUT -F file=@<file> http://<IP or domain>/upload
 ```
 
 *Response:*
@@ -43,7 +43,7 @@ curl -X PUT -F file=@<file> http://127.0.0.1:5000/upload
 
 #### Download file:
 ```curl
-curl -X GET http://127.0.0.1:5000/download/<hash> --output <hash>
+curl -X GET http://<IP or domain>/download/<hash> --output <hash>
 ```
 
 *Response:*
@@ -54,7 +54,7 @@ curl -X GET http://127.0.0.1:5000/download/<hash> --output <hash>
 
 #### Delete file:
 ```curl
-curl -X DELETE http://192.168.1.9:5000/delete/<hash>
+curl -X DELETE http://<IP or domain>/delete/<hash>
 ```
 
 *Response:*
