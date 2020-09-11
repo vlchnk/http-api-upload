@@ -48,7 +48,7 @@ curl -X GET http://<IP or domain>/download/<hash> --output <hash>
 
 *Response:*
 ```json
-// if file nothing
+// if file not found
 {"error":"File not found","status":"404"}
 ```
 
@@ -63,6 +63,6 @@ curl -X DELETE http://<IP or domain>/delete/<hash>
 {"status": "200", "file": "<hash>"}
 ```
 ```json
-// If file nothing
+// If file not found
 {"status": "404", "error": "File not found"}
 ```
