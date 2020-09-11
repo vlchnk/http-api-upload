@@ -32,7 +32,7 @@ curl -X PUT -F file=@<file> http://127.0.0.1:5000/upload
 
 ```json
 // If something went wrong
-{'status': '400', 'error': 'Something went wrong'}
+{"status": "400", "error": "Something went wrong"}
 ```
 
 
@@ -55,9 +55,9 @@ curl -X DELETE http://192.168.1.9:5000/delete/<hash>
 **Response:**
 ```json
 // If file deleted
-{'status': '200', 'file': hash}
+{"status": "200", "file": "hash"}
 ```
 ```json
 // If file nothing
-{'status': '404', 'error': 'File not found'}
+{"status": "404", "error": "File not found"}
 ```
