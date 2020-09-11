@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
 # from werkzeug.datastructures import FileStorage
 import os
@@ -37,9 +37,16 @@ def upload_file():
         except:
             return 'Bad :c'
 
-@app.route('/download', methods=['GET', 'PUT'])
-def download_file():
-    pass
+
+@app.route('/download/<path:hash>', methods=['GET', 'POST'])
+def download(hash):
+    # uploads = os.path.join(current_app.root_path, app.config['UPLOAD_FOLDER'])
+    try:
+        uploads = './store/' + hash[:2] + "/" + hash
+        return send_file(uploads, as_attachment=True)
+    except:
+        payload = {'status': '404', 'error': 'File not found'}
+        return payload
 
 
 if __name__ == '__main__':
