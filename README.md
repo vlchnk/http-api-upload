@@ -32,12 +32,18 @@ curl -X PUT -F file=@<file> http://<IP or domain>/upload
 *Response:*
 ```json
 // If file uploaded successfully
-{"hash":"<hash>","status":"200"}
+
+{"hash":"<hash>"}
+
+// HTTP Response: 200
 ```
 
 ```json
 // If something went wrong
-{"status": "400", "error": "Something went wrong"}
+
+{"error": "Something went wrong"}
+
+// HTTP Response: 404
 ```
 
 
@@ -49,7 +55,10 @@ curl -X GET http://<IP or domain>/download/<hash> --output <hash>
 *Response:*
 ```json
 // if file not found
-{"error":"File not found","status":"404"}
+
+{"error":"File not found"}
+
+// HTTP Response: 404
 ```
 
 #### Delete file:
@@ -60,9 +69,15 @@ curl -X DELETE http://<IP or domain>/delete/<hash>
 *Response:*
 ```json
 // If file deleted
-{"status": "200", "file": "<hash>"}
+
+{"file": "<hash>"}
+
+// HTTP Response: 200
 ```
 ```json
 // If file not found
-{"status": "404", "error": "File not found"}
+
+{"error": "File not found"}
+
+// HTTP Response: 404
 ```
