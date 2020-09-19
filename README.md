@@ -19,7 +19,7 @@ Modules in Flask:
 
 **Hash**
 
-Hashing method is MD5
+Hashing method is `SHA256`
 
 ****
 

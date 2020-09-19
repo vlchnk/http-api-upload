@@ -13,7 +13,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def upload_file():
     f = request.files['file']
     hashname = secure_filename(f.filename)
-    filename = hashlib.md5(hashname.encode()).hexdigest()
+    filename = hashlib.sha256(hashname.encode()).hexdigest()
     path = str(filename[:2])
 
     # Create dir
